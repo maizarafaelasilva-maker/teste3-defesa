@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Defesa Civil - Proteção e Prevenção</title>
+  <style>
+    /* ==========================================================================
+       1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+       ========================================================================== */
+    :root {
+      --primary-orange: #FF6600;
+      --secondary-orange: #E65100;
+      --primary-blue: #0D47A1;
+      --dark-blue: #1A237E;
+      --light-gray: #F4F6F9;
+      --card-bg: #FFFFFF;
+      --text-color: #212121;
+      --text-muted: #616161;
+      --danger-red: #D32F2F;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--light-gray);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ==========================================================================
+       2. CABEÇALHO (HEADER)
+       ========================================================================== */
+    header {
+      background-color: var(--dark-blue);
+      color: #FFF;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text h1 {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .logo-text span {
+      font-size: 0.8rem;
+      color: #B0BEC5;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary-orange);
+    }
+
+    .btn-emergency {
+      background-color: var(--primary-orange);
+      color: #FFF;
+      padding: 10px 18px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn-emergency:hover {
+      background-color: var(--secondary-orange);
+    }
+
+    /* ==========================================================================
+       3. SEÇÃO HERO & ALERTA EM TEMPO REAL
+       ========================================================================== */
+    .hero {
+      background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+      color: #FFF;
+      padding: 60px 0 40px 0;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #E0E0E0;
+      margin-bottom: 30px;
+    }
+
+    /* Banner de Alerta */
+    .alert-banner {
+      background-color: #FFF3E0;
+      border-left: 6px solid var(--primary-orange);
+      color: #E65100;
+      padding: 15px 20px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .alert-banner strong {
+      font-size: 1.1rem;
+    }
+
+    /* ==========================================================================
+       4. TELEFONES DE EMERGÊNCIA
+       ========================================================================== */
+    .phones-section {
+      margin-top: -30px;
+      position: relative;
+      z-index: 10;
+      margin-bottom: 50px;
+    }
+
+    .phones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .phone-card {
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-top: 4px solid var(--primary-orange);
+      transition: transform 0.3s;
+    }
+
+    .phone-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .phone-card h3 {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .phone-card .number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary-blue);
+    }
+
+    /* ==========================================================================
+       5. ORIENTAÇÕES DE PREVENÇÃO
+       ========================================================================== */
+    .prevention-section {
+      padding: 40px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--dark-blue);
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: box-shadow 0.3s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      list-style-position: inside;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .card ul li {
+      margin-bottom: 8px;
+    }
+
+    /* ==========================================================================
+       6. NOTÍCIAS E BOLETINS
+       ========================================================================== */
+    .news-section {
+      padding: 40px 0 60px 0;
+      background-color: #EFEFEF;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .news-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .news-body {
+      padding: 20px;
+    }
+
+    .news-date {
+      font-size: 0.8rem;
+      color: var(--primary-orange);
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .news-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--dark-blue);
+    }
+
+    .news-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       7. RODAPÉ (FOOTER)
+       ========================================================================== */
+    footer {
+      background-color: var(--dark-blue);
+      color: #FFF;
+      padding: 40px 0 20px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-col h4 {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--primary-orange);
+      padding-bottom: 5px;
+      display: inline-block;
+    }
+
+    .footer-col p, .footer-col ul {
+      font-size: 0.9rem;
+      color: #B0BEC5;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col a:hover {
+      color: #FFF;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.85rem;
+      color: #B0BEC5;
+    }
+
+    /* RESPONSIVIDADE PARA TELAS MENORES */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      .alert-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <div class="logo-icon">▲</div>
+        <div class="logo-text">
+          <h1>Defesa Civil</h1>
+          <span>Proteção e Defesa da Comunidade</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#alertas">Alertas</a></li>
+          <li><a href="#prevencao">Prevenção</a></li>
+          <li><a href="#noticias">Notícias</a></li>
+          <li><a href="#emergencia" class="btn-emergency">LIGUE 199</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SEÇÃO HERO & ALERTA -->
+  <section class="hero" id="inicio">
+    <div class="container hero-content">
+      <h2>Protegendo Vidas, Construindo Resiliência</h2>
+      <p>Acompanhe os alertas meteorológicos, saiba como agir em cenários de emergência e proteja sua família.</p>
+      
+      <div class="alert-banner" id="alertas">
+        <div>
+          <strong>⚠️ ALERTA AMARELO: Previsão de Chuvas Fortes</strong>
+          <p style="font-size: 0.9rem; margin: 0;">Válido para as próximas 24 horas na região metropolitana.</p>
+        </div>
+        <a href="#prevencao" style="font-weight: bold; color: var(--secondary-orange); text-decoration: underline;">Ver Recomendações</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TELEFONES DE EMERGÊNCIA -->
+  <section class="phones-section" id="emergencia">
+    <div class="container">
+      <div class="phones-grid">
+        <div class="phone-card">
+          <h3>Defesa Civil</h3>
+          <div class="number">199</div>
+        </div>
+        <div class="phone-card">
+          <h3>Corpo de Bombeiros</h3>
+          <div class="number">193</div>
+        </div>
+        <div class="phone-card">
+          <h3>Polícia Militar</h3>
+          <div class="number">190</div>
+        </div>
+        <div class="phone-card">
+          <h3>SAMU</h3>
+          <div class="number">192</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DICAS DE PREVENÇÃO -->
+  <section class="prevention-section" id="prevencao">
+    <div class="container">
+      <div class="section-title">
+        <h2>Guia de Prevenção e Ação</h2>
+        <p>Saiba o que fazer antes, durante e depois de eventos adversos.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">🌊</div>
+          <h3>Alagamentos</h3>
+          <ul>
+            <li>Não tente atravessar enxurradas.</li>
+            <li>Desconecte aparelhos elétricos.</li>
+            <li>Coloque móveis e documentos em locais altos.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⛰️</div>
+          <h3>Deslizamentos</h3>
+          <ul>
+            <li>Fique atento a rachaduras em paredes/solos.</li>
+            <li>Inclinação de postes ou árvores é sinal de perigo.</li>
+            <li>Abandone a área imediatamente ao menor sinal.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Tempestades e Raios</h3>
+          <ul>
+            <li>Evite abrigo debaixo de árvores isoladas.</li>
+            <li>Não permaneça em áreas abertas como campos.</li>
+            <li>Evite contato com objetos metálicos.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔥</div>
+          <h3>Queimadas</h3>
+          <ul>
+            <li>Não jogue bitucas de cigarro em rodovias.</li>
+            <li>Não faça queimadas para limpeza de terrenos.</li>
+            <li>Acione o 193 ao avistar foco de incêndio.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOLETINS E NOTÍCIAS -->
+  <section class="news-section" id="noticias">
+    <div class="container">
+      <div class="section-title">
+        <h2>Boletins e Avisos Recentes</h2>
+        <p>Informações atualizadas para manter você em segurança.</p>
+      </div>
+
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-body">
+            <span class="news-date">Hoje</span>
+            <h3>Treinamento de Evacuação no Bairro Central</h3>
+            <p>Simulado de emergência preparou moradores para ações rápidas em caso de chuva intensa.</p>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-body">
+            <span class="news-date">Ontem</span>
+            <h3>Monitoramento dos Rios da Região</h3>
+            <p>Níveis dos rios sob controle, porém equipes seguem em prontidão devido às chuvas no topo da serra.</p>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-body">
+            <span class="news-date">Há 2 dias</span>
+            <h3>Inscrições Abertas para Voluntários</h3>
+            <p>Saiba como apoiar as ações da Defesa Civil do seu município nos momentos de crise.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Defesa Civil</h4>
+          <p>Trabalhando continuamente na prevenção, mitigação, preparação, resposta e recuperação contra desastres.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#alertas">Alertas Vigentes</a></li>
+            <li><a href="#prevencao">Cartilhas Informativas</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contato Institucional</h4>
+          <p>Endereço: Centro Administrativo Municipal</p>
+          <p>E-mail: contato@defesacivil.gov.br</p>
+          <p>Atendimento Administrativo: 08:00 - 18:00</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; Defesa Civil. Todos os direitos reservados. Em emergências, ligue 199.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
